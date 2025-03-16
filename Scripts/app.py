@@ -60,6 +60,63 @@ back_button = ft.ElevatedButton(
     icon=ft.icons.ARROW_BACK
 )
 
+# Textos Tutoriais.
+passo1_text = ft.Text(
+    "1. Clique no botão upload e carregue a planilha disparos.", 
+    size = 18,
+    weight=ft.FontWeight.BOLD,
+    font_family="Roboto",)
+
+# Textos Tutoriais.
+passo2_text = ft.Text(
+    "2. Procure pelo arquivo da planilha disparos e clique em 'abrir'.", 
+    size = 18,
+    weight=ft.FontWeight.BOLD,
+    font_family="Roboto",)
+
+# Textos Tutoriais.
+passo3_text = ft.Text(
+    "3. Clique no botão executar e espere o processamento da planilha.", 
+    size = 18,
+    weight=ft.FontWeight.BOLD,
+    font_family="Roboto",)
+
+# Textos Tutoriais.
+passo4_text = ft.Text(
+    "4. Procure pela planilha disparos atualizada na mesma pasta da original.", 
+    size = 18,
+    weight=ft.FontWeight.BOLD,
+    font_family="Roboto",)
+
+# Imagens.
+passo1_img = ft.Image(
+    src="img/passo1.png",
+    width=600,
+    height=300,
+    fit=ft.ImageFit.FILL
+)
+
+passo2_img = ft.Image(
+    src="img/passo2.png",
+    width=600,
+    height=300,
+    fit=ft.ImageFit.FILL
+)
+
+passo3_img = ft.Image(
+    src="img/passo3.png",
+    width=600,
+    height=300,
+    fit=ft.ImageFit.FILL
+)
+
+passo4_img = ft.Image(
+    src="img/passo4.png",
+    width=600,
+    height=300,
+    fit=ft.ImageFit.FILL
+)
+
 # Status inicial.
 status = ft.Text("Esperando planilha disparos...", text_align=ft.TextAlign.CENTER)
 
@@ -108,7 +165,7 @@ def main_page():
         ]
     )
 
-# Tela de tutorial.
+# Tela de tutorial
 def tutorial_page():
     return ft.View(
         "/tutorial",
@@ -120,9 +177,60 @@ def tutorial_page():
                         alignment=ft.MainAxisAlignment.START
                     )
                 ]
+                    ),
+                    ft.Container(height=20),  # Espaçamento entre os controles
+                    ft.ListView(
+                        controls=[
+                            ft.Column(
+                                controls=[
+                                    ft.Column(
+                                        [
+                                            passo1_img,
+                                            passo1_text,
+                                        ],
+                                        spacing=10,
+                                    ),
+                                    ft.Container(height=20),  # Espaçamento entre passos
+                                    ft.Column(
+                                        [
+                                            passo2_img,
+                                            passo2_text,
+                                        ],
+                                        spacing=10,
+                                    ),
+                                    ft.Container(height=20),
+                                    ft.Column(
+                                        [
+                                            passo3_img,
+                                            passo3_text,
+                                        ],
+                                        spacing=10,
+                                    ),
+                                    ft.Container(height=20),
+                                    ft.Column(
+                                        [
+                                            passo4_img,
+                                            passo4_text,
+                                        ],
+                                        spacing=10,
+                                    ),
+                                ],
+                                spacing=20,
+                                expand=True,
+                                alignment=ft.MainAxisAlignment.START,
+                                horizontal_alignment=ft.CrossAxisAlignment.START,
+                            )
+                        ],
+                        expand=True,
+                        spacing=10,
+                        padding=10,
+                        auto_scroll=True, 
+                    ),
+                ],
+                spacing=10,
+                scroll=ft.ScrollMode.AUTO,
+                alignment=ft.MainAxisAlignment.START,
             )
-        ]
-    )
 
 # Função principal para gerenciar as views.
 def main(page: ft.Page):
